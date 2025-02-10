@@ -18,14 +18,19 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
-        run: pip install feedparser requests
+      - name: Install Dependencies
+        run: pip install -r requirements.txt  # Install all dependencies from requirements.txt
 
       - name: Run ArXiv Paper Extractor
-        run: python arxiv_paper_extractor.py
+        run: python scripts/fetch_papers.py  # Run the updated Python script
         
-      - name: Get current year dynamically
-        run: echo "YEAR=$(date +'%Y')" >> $GITHUB_ENV        
+      - name: Get Current Year and Week Range
+        run: |
+          echo "YEAR=$(date +'%Y')" >> $GITHUB_ENV
+          START_DATE=$(date -d 'last monday' +'%B%d')
+          END_DATE=$(date -d 'last sunday' +'%B%d')
+          FILE_NAME="${START_DATE}_to_${END_DATE}.md"
+          echo "WEEKLY_FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
 
       - name: Configure Git
         run: |
@@ -34,7 +39,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git add research_updates/${{ env.YEAR }}_papers/
-          git commit -m "📄 Weekly ArXiv paper update [$(date +'%Y-%m-%d')]"
-          git push
-        continue-on-error: true  # Avoids workflow failure if no changes exist
+          git add research_updates/${{ env.YEAR }}_papers/${{ env.WEEKLY_FILE_NAME }} || true
+          git commit -m "📄 Weekly ArXiv paper update [${{ env.WEEKLY_FILE_NAME }}]" || echo "No changes to commit"
+          git push || echo "No changes to push"
