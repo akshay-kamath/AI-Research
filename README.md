@@ -47,6 +47,12 @@ Keeping up with AI research is challenging. This repository helps by:
 │ │ └── ...
 └── LICENSE
 
+.github/
+workflows/
+📜 update_papers.yml
+📜 categorize_papers.yml
+...
+📜 LICENSE
 
 ---
 
@@ -75,7 +81,7 @@ All contributions are welcome! Whether it's adding papers, summarizing insights,
 We use automation to keep the repository up to date:  
 
 ✅ **ArXiv Scraper** – Fetches latest AI research papers weekly (`scripts/arxiv_scraper.py`).  
-✅ **Paper Summarization** – Formats and organizes papers (`scripts/paper_summary_tools.py`). (Coming soon)
+✅ **Paper Summarization**(Coming soon) – Formats and organizes papers (`scripts/paper_summary_tools.py`).
 ✅ **GitHub Actions** – Automates weekly updates (`.github/workflows/update_papers.yml`).  
 
 For more details, check the [`scripts/`](./scripts) and [`.github/workflows/`](./.github/workflows) directories.  
