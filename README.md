@@ -77,9 +77,9 @@ All contributions are welcome! Whether it's adding papers, summarizing insights,
 
 We use automation to keep the repository up to date:  
 
+✅ **GitHub Actions** – Automates weekly updates (`.github/workflows/update_papers.yml`).  
 ✅ **ArXiv Scraper** – Fetches latest AI research papers weekly (`scripts/arxiv_scraper.py`).  
 ✅ **Paper Summarization**(Coming soon) – Formats and organizes papers (`scripts/paper_summary_tools.py`).
-✅ **GitHub Actions** – Automates weekly updates (`.github/workflows/update_papers.yml`).  
 
 For more details, check the [`scripts/`](./scripts) and [`.github/workflows/`](./.github/workflows) directories.  
 
