@@ -47,6 +47,18 @@ Keeping up with AI research is challenging. This repository helps by:
 │ │ └── ...
 └── LICENSE
 
+
+AI-Research-Papers
+📜 README.md
+research_updates/
+2025_papers/
+📜 February05_to_February11.md
+📜 February12_to_February18.md
+📜 February19_to_February25.md
+... (Weekly updates continue)
+2024_papers/
+2023_papers/
+...
 .github/
 workflows/
 📜 update_papers.yml
