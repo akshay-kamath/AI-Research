@@ -40,7 +40,7 @@ Keeping up with AI research is challenging. This repository helps by:
 │ ├── 📜 tutorials.md
 │ └── ...
 │── 📂 scripts
-│ ├── 📜 arxiv_scraper.py
+│ ├── 📜 fetch_papers.py
 │ └── ...
 │── 📂 .github
 │ ├── 📂 workflows
