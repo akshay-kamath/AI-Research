@@ -2,7 +2,10 @@ name: ArXiv Paper Collector
 
 on:
   schedule:
-    - cron: "0 0 * * 1"  # Runs every Monday at 12 AM UTC
+#    - cron: "0 0 * * 1"  # Runs every Monday at 12 AM UTC
+    - cron: "0 0 1-28 1 *"  # Runs every day in January 2024
+
+    
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
