@@ -1,0 +1,40 @@
+name: ArXiv Paper Collector
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"  # Runs every Monday at 12 AM UTC
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  fetch-papers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Pulls the latest code
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install feedparser requests
+
+      - name: Run ArXiv Paper Extractor
+        run: python arxiv_paper_extractor.py
+        
+      - name: Get current year dynamically
+        run: echo "YEAR=$(date +'%Y')" >> $GITHUB_ENV        
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and Push Changes
+        run: |
+          git add research_updates/${{ env.YEAR }}_papers/
+          git commit -m "📄 Weekly ArXiv paper update [$(date +'%Y-%m-%d')]"
+          git push
+        continue-on-error: true  # Avoids workflow failure if no changes exist
